@@ -189,7 +189,7 @@ Execute script:
 python3 main.py
 ```
 ## Video:
-![paramiko_video](media/paramiko_video.gif)
+![paramiko_video](media/paramiko_vid.gif)
 # References
 - https://codefather.tech/blog/if-name-main-python/
 - https://hub.docker.com/r/linuxserver/openssh-server
