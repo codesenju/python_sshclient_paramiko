@@ -6,7 +6,7 @@
 - [python3](https://www.python.org/downloads/), [paramiko](https://www.paramiko.org/installing.html) python module
   
 ## What is Pramiko
-Paramiko is a one of many python modules that implements the SSHv2 protocol. With paramiko you can perform various remote tasks like running commands on remote hosts, copying files to and from remote hosts to your local machine.
+Paramiko is a one of many python modules that implements the SSHv2 protocol. With paramiko you can perform various remote tasks like running commands on remote server, copying files to and from a remote server to your local machine just to mention a few. To get a full list of all the functions read more on the [SFTP client object](https://docs.paramiko.org/en/stable/api/sftp.html).
 
 # Let's have look at our code:
 ## docker-compose.yml
@@ -68,30 +68,30 @@ if __name__ == "__main__":
         sftp_client = ssh_client.open_sftp()
 ```
 
-### Change path in remote host:
+### Change path on remote server:
 ```python
-        # 1. CHANGE PATH IN REMOTE HOST
+        # 1. CHANGE PATH ON THE REMOTE SERVER
         print("##########-1.-CHANGE-PATH-##########")
         sftp_client.chdir("/tmp")
         print(sftp_client.getcwd())
 ```
-### Run command remotely:
+### Run commands remotely:
 ```python
-        # 2. RUN COMMAND ON REMOTE HOST
+        # 2. RUN COMMAND ON REMOTE SERVER
         print("##########-2.-REMOTE-COMMAND-##########")
         execRemoteCommand("ls -l /tmp", ssh_client)
 ```
 
-###  Copy file to remote host:
+###  Copy file to remote Server:
 ```python
-        # 3. COPY FILE TO REMOTE HOST
+        # 3. COPY FILE TO REMOTE SERVER
         print("##########-3.-REMOTE-COMMAND-##########")
         sftp_client.put("README.md", "README.md")
         execRemoteCommand("stat /tmp/README.md", ssh_client)
 ```
-### Download file from remote host to local machine:
+### Download file from remote server to local machine:
 ```python
-        # 4. DOWNLOAD FILE FROM REMOTE HOST
+        # 4. DOWNLOAD FILE FROM REMOTE SERVER
         print("##########-4.-DOWNLOAD-FILE-##########")
         sftp_client.get("/tmp/remote_file.txt","remote_file.txt")
 ```
@@ -134,21 +134,21 @@ if __name__ == "__main__":
         ssh_client.connect(hostname=hostname, username=username, password=password, port=PORT)
         sftp_client = ssh_client.open_sftp()
 
-        # 1. CHANGE PATH IN REMOTE HOST
+        # 1. CHANGE PATH ON REMOTE SERVER
         print("##########-1.-CHANGE-PATH-##########")
         sftp_client.chdir("/tmp")
         print(sftp_client.getcwd())
 
-        # 2. RUN COMMAND ON REMOTE HOST
+        # 2. RUN COMMAND ON REMOTE SERVER
         print("##########-2.-REMOTE-COMMAND-##########")
         execRemoteCommand("ls -l /tmp", ssh_client)
 
-        # 3. COPY FILE TO REMOTE HOST
+        # 3. COPY FILE TO REMOTE SERVER
         print("##########-3.-REMOTE-COMMAND-##########")
         sftp_client.put("README.md", "README.md")
         execRemoteCommand("stat /tmp/README.md", ssh_client)
 
-        # 4. DOWNLOAD FILE FROM REMOTE HOST
+        # 4. DOWNLOAD FILE FROM REMOTE SERVER
         print("##########-4.-DOWNLOAD-FILE-##########")
         sftp_client.get("/tmp/remote_file.txt","remote_file.txt")
         
@@ -162,16 +162,16 @@ if __name__ == "__main__":
 
 # Tutorial
 In this example we will be using paramiko to perform 4 remote tasks:
-  1.  Change paths on remote host and return the current path.
-  2.  Run any shell commands on a remote host.
-  3.  Copy a file to remote host.
-  4.  Download a file form remote hosts to our local machine.
+  1.  Change paths on remote server and return the current path.
+  2.  Run any shell commands on a remote sever.
+  3.  Copy a file to remote server.
+  4.  Download a file form remote server to our local machine.
 
-## a) Let's  start our remote host container called lab.
+## a) Let's  start our remote server container called lab.
 ```shell
 docker-compsoe up -d
 ```
-Let's create a file in the remote host that we will be using later:
+Let's create a file on the remote server that we will be using later:
 ```shell
 docker exec -ti lab bash -c 'echo "Hello from $HOSTNAME | $TZ" > /tmp/remote_file.txt'
 ```

@@ -25,21 +25,21 @@ if __name__ == "__main__":
         ssh_client.connect(hostname=hostname, username=username, password=password, port=PORT)
         sftp_client = ssh_client.open_sftp()
 
-        # 1. CHANGE PATH IN REMOTE HOST
+        # 1. CHANGE PATH ON THE REMOTE SERVER
         print("##########-1.-CHANGE-PATH-##########")
         sftp_client.chdir("/tmp")
         print(sftp_client.getcwd())
 
-        # 2. RUN COMMAND ON REMOTE HOST
+        # 2. RUN COMMAND ON REMOTE SERVER
         print("##########-2.-REMOTE-COMMAND-##########")
         execRemoteCommand("ls -l /tmp", ssh_client)
 
-        # 3. COPY FILE TO REMOTE HOST
+        # 3. COPY FILE TO REMOTE SERVER
         print("##########-3.-REMOTE-COMMAND-##########")
         sftp_client.put("README.md", "README.md")
         execRemoteCommand("stat /tmp/README.md", ssh_client)
 
-        # 4. DOWNLOAD FILE FROM REMOTE HOST
+        # 4. DOWNLOAD FILE FROM REMOTE SERVER
         print("##########-4.-DOWNLOAD-FILE-##########")
         sftp_client.get("/tmp/remote_file.txt","remote_file.txt")
 
