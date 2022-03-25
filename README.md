@@ -188,3 +188,7 @@ Execute script:
 ```shell
 python3 main.py
 ```
+# References
+- https://codefather.tech/blog/if-name-main-python/
+- https://hub.docker.com/r/linuxserver/openssh-server
+- https://docs.paramiko.org/en/stable/api/client.html
