@@ -50,11 +50,11 @@ def execRemoteCommand(cmd_, client):
     print(cmd_)
     stdin, stdout, stderr = client.exec_command(cmd_)
     output = stderr.readlines()
-    for index, item in enumerate(output):
-        print(item)
+    output_line = ''.join(output)
+    print(output_line)
     output = stdout.readlines()
-    for index, item in enumerate(output):
-        print(item)
+    output_line = ''.join(output)
+    print(output_line)
 ```
 ### Open connection:
 Here we will try to open our connection with the lab container.

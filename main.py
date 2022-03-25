@@ -11,12 +11,11 @@ def execRemoteCommand(cmd_, client):
     print(cmd_)
     stdin, stdout, stderr = client.exec_command(cmd_)
     output = stderr.readlines()
-    for index, item in enumerate(output):
-        print(item)
+    output_line = ''.join(output)
+    print(output_line)
     output = stdout.readlines()
-    for index, item in enumerate(output):
-        print(item)
-
+    output_line = ''.join(output)
+    print(output_line)
 
 if __name__ == "__main__":
 
@@ -43,7 +42,7 @@ if __name__ == "__main__":
         # 4. DOWNLOAD FILE FROM REMOTE HOST
         print("##########-4.-DOWNLOAD-FILE-##########")
         sftp_client.get("/tmp/remote_file.txt","remote_file.txt")
-        
+
     except Exception as err:
         print("SSH CLIENT ERROR: {}".format(err))
     finally:
