@@ -46,5 +46,5 @@ if __name__ == "__main__":
     except Exception as err:
         print("SSH CLIENT ERROR: {}".format(err))
     finally:
-        #    sftp_client.close()
+        sftp_client.close()
         ssh_client.close()

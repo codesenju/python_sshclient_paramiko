@@ -95,12 +95,12 @@ if __name__ == "__main__":
         print("##########-4.-DOWNLOAD-FILE-##########")
         sftp_client.get("/tmp/remote_file.txt","remote_file.txt")
 ```
-### Handling errors:
+### Handling errors and close sftp, ssh client objects:
 ```python
     except Exception as err:
         print("SSH CLIENT ERROR: {}".format(err))
     finally:
-        #    sftp_client.close()
+        sftp_client.close()
         ssh_client.close()
 ```
 
@@ -155,7 +155,7 @@ if __name__ == "__main__":
     except Exception as err:
         print("SSH CLIENT ERROR: {}".format(err))
     finally:
-        #    sftp_client.close()
+        sftp_client.close()
         ssh_client.close()
 
 ```
